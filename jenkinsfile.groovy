@@ -33,8 +33,6 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    echo ${VENV_DIR}
-                    ${VENV_DIR}/bin/activate
                     python -m robot -d Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot
                     deactivate                   
                      '''
