@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         ROBOT_OUTPUT_DIR = 'results'
+        VENV_DIR = 'venv'
     }
 
     stages {
