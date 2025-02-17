@@ -15,7 +15,6 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    python3 -m venv venv
                     . venv/bin/activate
                     python --version
                     pip --version
