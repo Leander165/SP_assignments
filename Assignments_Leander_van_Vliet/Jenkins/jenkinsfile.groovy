@@ -18,13 +18,12 @@ pipeline {
                 script {
                     sh '''
                     python3 -m venv ${VENV_DIR}
-                    source ${VENV_DIR}/bin/activate
+                    . ${VENV_DIR}/bin/activate
                     python --version
                     pip --version
                     pip install --upgrade pip
                     pip install --upgrade robotframework robotframework-seleniumlibrary
                     robot --version
-                    deactivate
                     '''
                 }
             }
@@ -34,9 +33,9 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    source ${VENV_DIR}/bin/activate
-                    python -m robot -d Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot
-                    deactivate                   
+                    echo ${VENV_DIR}
+                    ${VENV_DIR}/bin/activate
+                    python -m robot -d Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot                
                      '''
                 }
             }
