@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         ROBOT_OUTPUT_DIR = 'results'
-        VENV_DIR = 'venv'
     }
 
     stages {
@@ -16,7 +15,8 @@ pipeline {
             steps {
                 script {
                     sh '''
-                    python3 -m venv ${VENV_DIR}
+                    python3 -m venv venv
+                    . venv/bin/activate
                     python --version
                     pip --version
                     pip install --upgrade pip
