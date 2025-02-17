@@ -32,6 +32,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                    . venv/bin/activate
                     python -m robot -d results $(pwd)/Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot || echo "⚠️ Robot Framework test failed with exit code $?"
                     '''
                 }
