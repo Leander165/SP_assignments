@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.3 on darwin)" generated="2025-02-17T20:14:54.149755" rpa="false" schemaversion="5">
+<suite id="s1" name="LogOutUnitTest" source="/Users/leandervanvliet/Documents/Spritecloud/UI_test/UITests/LogOutUnitTest/LogOutUnitTest.robot">
+<test id="s1-t1" name="Logging out from SauceDemo" line="9">
+<kw name="Set Screenshot Folder" owner="keywords">
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-17T20:14:54.225008" level="INFO">${TEST_NAME} = LogOutUnitTest</msg>
+<var>${TEST_NAME}</var>
+<arg>${SUITE NAME}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-17T20:14:54.224899" elapsed="0.000722"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-02-17T20:14:54.225929" level="INFO">${TEST_NAME} = LogOutUnitTest</msg>
+<var>${TEST_NAME}</var>
+<arg>"${TEST_NAME}".replace(".robot", "")</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-02-17T20:14:54.225726" elapsed="0.000268"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-17T20:14:54.226205" level="INFO">${SCREENSHOT_PATH} = UITests/LogOutUnitTest/screenshots/</msg>
+<var>${SCREENSHOT_PATH}</var>
+<arg>UITests/${TEST_NAME}/screenshots/</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-17T20:14:54.226086" elapsed="0.000164"/>
+</kw>
+<kw name="Set Global Variable" owner="BuiltIn">
+<msg time="2025-02-17T20:14:54.226450" level="INFO">${SCREENSHOT_PATH} = UITests/LogOutUnitTest/screenshots/</msg>
+<arg>${SCREENSHOT_PATH}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<status status="PASS" start="2025-02-17T20:14:54.226328" elapsed="0.000167"/>
+</kw>
+<status status="PASS" start="2025-02-17T20:14:54.224562" elapsed="0.001984"/>
+</kw>
+<kw name="Open SauceDemo" owner="keywords">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-02-17T20:14:54.227116" level="INFO">Opening browser 'Chrome' to base url 'https://www.saucedemo.com/'.</msg>
+<arg>${URL}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=add_argument("--incognito")</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-02-17T20:14:54.226886" elapsed="1.581278"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-02-17T20:14:55.808504" elapsed="0.365295"/>
+</kw>
+<status status="PASS" start="2025-02-17T20:14:54.226748" elapsed="1.947222"/>
+</kw>
+<kw name="Login To SauceDemo" owner="keywords">
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-17T20:14:56.174861" level="INFO">Typing text 'standard_user' into text field 'id=user-name'.</msg>
+<arg>id=user-name</arg>
+<arg>${USERNAME}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-17T20:14:56.174499" elapsed="0.070144"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2025-02-17T20:14:56.244961" level="INFO">Typing text 'secret_sauce' into text field 'id=password'.</msg>
+<arg>id=password</arg>
+<arg>${PASSWORD}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-17T20:14:56.244793" elapsed="0.030581"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-17T20:14:56.275731" level="INFO">Clicking button 'xpath=//*[@id="login-button"]'.</msg>
+<arg>xpath=//*[@id="login-button"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-17T20:14:56.275548" elapsed="0.039171"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="react-burger-menu-btn"]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-17T20:14:56.315100" elapsed="0.005888"/>
+</kw>
+<status status="PASS" start="2025-02-17T20:14:56.174292" elapsed="0.146804"/>
+</kw>
+<kw name="Logout from SauceDemo" owner="keywords">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-02-17T20:14:56.321637" level="INFO">Clicking button 'xpath=//*[@id="react-burger-menu-btn"]'.</msg>
+<arg>xpath=//*[@id="react-burger-menu-btn"]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-17T20:14:56.321462" elapsed="0.027985"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="logout_sidebar_link"]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-02-17T20:14:56.349596" elapsed="0.219436"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-02-17T20:14:57.570284" level="INFO">Slept 1 second.</msg>
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-02-17T20:14:56.569174" elapsed="1.001253"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2025-02-17T20:14:57.570661" level="INFO">Clicking element 'xpath=//*[@id="logout_sidebar_link"]'.</msg>
+<arg>xpath=//*[@id="logout_sidebar_link"]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-02-17T20:14:57.570535" elapsed="0.025208"/>
+</kw>
+<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
+<arg>xpath=//*[@id="login-button"]</arg>
+<arg>timeout=5s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" start="2025-02-17T20:14:57.595916" elapsed="0.004461"/>
+</kw>
+<status status="PASS" start="2025-02-17T20:14:56.321293" elapsed="1.279181"/>
+</kw>
+<kw name="Take Screenshot" owner="keywords">
+<kw name="Get Current Date" owner="DateTime">
+<msg time="2025-02-17T20:14:57.601190" level="INFO">${timestamp} = 20250217_201457</msg>
+<var>${timestamp}</var>
+<arg>result_format=%Y%m%d_%H%M%S</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<status status="PASS" start="2025-02-17T20:14:57.601042" elapsed="0.000206"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-02-17T20:14:57.601417" level="INFO">${screenshot_name} = UITests/LogOutUnitTest/screenshots/screenshot_20250217_201457.png</msg>
+<var>${screenshot_name}</var>
+<arg>${SCREENSHOT_PATH}screenshot_${timestamp}.png</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-02-17T20:14:57.601318" elapsed="0.000140"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-02-17T20:14:57.723912" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="UITests/LogOutUnitTest/screenshots/screenshot_20250217_201457.png"&gt;&lt;img src="UITests/LogOutUnitTest/screenshots/screenshot_20250217_201457.png" width="800px"&gt;&lt;/a&gt;</msg>
+<arg>${screenshot_name}</arg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-02-17T20:14:57.601521" elapsed="0.122500"/>
+</kw>
+<status status="PASS" start="2025-02-17T20:14:57.600751" elapsed="0.123329"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-02-17T20:14:57.724249" elapsed="0.081239"/>
+</kw>
+<status status="PASS" start="2025-02-17T20:14:54.224328" elapsed="3.581480"/>
+</test>
+<status status="PASS" start="2025-02-17T20:14:54.151809" elapsed="3.654389"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="LogOutUnitTest">LogOutUnitTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
