@@ -13,8 +13,10 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
+                catchError(buildResult: 'UNSTABLE') {
                 script {
                     sh '''
+                    python3 -m venv venv
                     . venv/bin/activate
                     python --version
                     pip --version
@@ -22,6 +24,7 @@ pipeline {
                     pip install --upgrade robotframework robotframework-seleniumlibrary
                     robot --version
                     '''
+                }
                 }
             }
         }
