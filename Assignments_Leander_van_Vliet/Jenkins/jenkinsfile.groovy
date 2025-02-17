@@ -16,9 +16,9 @@ pipeline {
             steps {
                 script {
                     try {
-                        sh 'robot -d results UItests/'
+                        sh 'robot -d results Assignments_Leander_van_Vliet/UITests/'
                     } catch (Exception e) {
-                        echo "⚠️ UI Tests failed, check results!"
+                        echo "UI Tests failed, check results!"
                         currentBuild.result = 'UNSTABLE'
                     }
                 }
