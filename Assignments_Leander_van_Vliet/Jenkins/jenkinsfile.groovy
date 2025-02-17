@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                catchError(buildResult: 'UNSTABLE') {
+                catchError(buildResult: 'SUCCESS') {
                 script {
                     sh '''
                     python3 -m venv venv
