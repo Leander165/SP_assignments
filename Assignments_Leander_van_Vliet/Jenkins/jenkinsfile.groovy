@@ -16,6 +16,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                    python3 -m venv ${VENV_DIR}
                     python --version
                     pip --version
                     pip install --upgrade pip
@@ -34,5 +35,3 @@ pipeline {
                 }
             }
         }
-    }
-}
