@@ -18,10 +18,11 @@ pipeline {
                     sh '''
                     python3 -m venv venv
                     . venv/bin/activate
-                    pip install --upgrade pip
-                    pip install --upgrade robotframework robotframework-seleniumlibrary
+                    pip3 install --upgrade pip
+                    pip3 install --upgrade robotframework robotframework-seleniumlibrary
                     python --version
-                    pip --version
+                    pip3 --version
+                    pip3 install requests
                     '''
                     }
                 }
