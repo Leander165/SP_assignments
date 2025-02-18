@@ -2,7 +2,6 @@ pipeline {
     agent any
 
 environment {
-        ROBOT_OUTPUT_DIR = 'results'
 }
 
 triggers {
@@ -61,7 +60,7 @@ triggers {
     post {
         always {
             script {
-                failure {
+                if (currentBuild.result == 'FAILURE') {
                         emailext (
                             to: 'Thisemailisfakebutineedtoputsomething@somethingofcourse.com',
                             subject: 'One of your jenkins tests failed',
@@ -71,7 +70,7 @@ triggers {
                     echo "Build result = ${currentBuild.result}"
                    
                 }
-                success {
+                else {
                     currentBuild.result = 'SUCCESS'
                     echo "Build result = ${currentBuild.result}, no email will be send"
                    
