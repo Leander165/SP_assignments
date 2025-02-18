@@ -18,13 +18,12 @@ pipeline {
                     sh '''
                     python3 -m venv venv
                     . venv/bin/activate
-                    python --version
-                    pip --version
                     pip install --upgrade pip
                     pip install --upgrade robotframework robotframework-seleniumlibrary
-                    robot --version
+                    python --version
+                    pip --version
                     '''
-                }
+                    }
                 }
             }
         }
@@ -33,7 +32,7 @@ pipeline {
                 script {
                     sh '''
                     . venv/bin/activate
-                    python -m robot -d results $(pwd)/Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot || echo "⚠️ Robot Framework test failed with exit code $?"
+                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot || echo "⚠️ Robot Framework test failed with exit code $?"
                     '''
                 }
             }
