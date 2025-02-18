@@ -1,5 +1,7 @@
 All of the tests in the APITests and UITests are configured in a Jenkins pipeline. 
 
+First I am going to explain what I did in the pipeline script:
+
 At the beginning of the pipeline script we see:
 
 Pipeline { agent any }, this will make sure that any available agent (or virtual node that is available) will pick the job to run it. 
@@ -29,4 +31,16 @@ Post section
     In this post section, an email will be send to the OPS user if the pipeline result is FAILURE. 
     If the pipeline is SUCCESS only the build result will be printed.
     We do this to make sure that a failed test will be noticed by the OPS person.
+
+
+Note:
+AI is used to: 
+- I had some problems with setting up and opening the virtual environment in jenkins workspace, so I used AI to help me debug and he suggested met to use  . venv/bin/activate
+- I also had a problem with the post stage. The Post { Script { Failure }} was not working properly, my jenkins was not able to understand the failure part.
+    I used this failure part before in the pipelines I build so I used AI to debug. He was also not able to find the solution so I fixed it with:
+    if if (currentBuild.result == 'FAILURE') {
+- I also used AI to figure out how I could make sure that the robot results are exported to the html output file. He suggested me to use python -m robot -d results 
+
+That's it :) 
+I  hope you like my project, I really enjoyed working on it!
 
