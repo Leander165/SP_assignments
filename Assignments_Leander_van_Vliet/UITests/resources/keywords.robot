@@ -22,7 +22,7 @@ Logout from SauceDemo
 Set Screenshot Folder
     ${TEST_NAME}=    Set Variable    ${SUITE NAME}  
     ${TEST_NAME}=    Evaluate    "${TEST_NAME}".replace(".robot", "")  
-    ${SCREENSHOT_PATH}=    Set Variable    UITests/${TEST_NAME}/screenshots/ 
+    ${SCREENSHOT_PATH}=    Set Variable    Assignments_Leander_van_Vliet/UITests/${TEST_NAME}/screenshots/ 
     Set Global Variable    ${SCREENSHOT_PATH}
 
 Add Shirt and Go to Cart
