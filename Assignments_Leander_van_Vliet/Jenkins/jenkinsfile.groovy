@@ -1,68 +1,82 @@
 pipeline {
     agent any
 
-    triggers {
-        cron('0 7 * * *') 
-    }
-
-    environment {
+environment {
         ROBOT_OUTPUT_DIR = 'results'
-    }
+}
 
+triggers {
+        cron('0 7 * * *')
+    }
+    
     stages {
         stage('Checkout Repository') {
             steps {
                 git branch: 'main', url: 'https://github.com/Leander165/SP_assignments.git'
             }
         }
-
         stage('Install Dependencies') {
             steps {
                 catchError(buildResult: 'SUCCESS') {
-                    script {
-                        sh '''
-                        python3 -m venv venv
-                        . venv/bin/activate
-                        pip install --upgrade pip
-                        pip install --upgrade robotframework robotframework-seleniumlibrary requests
-                        python --version
-                        pip --version
-                        '''
+                script {
+                    sh '''
+                    python3 -m venv venv
+                    . venv/bin/activate
+                    pip3 install --upgrade pip
+                    pip3 install --upgrade robotframework robotframework-seleniumlibrary
+                    python --version
+                    pip3 --version
+                    pip3 install requests
+                    '''
                     }
                 }
             }
         }
-
         stage('Run UI Tests') {
             steps {
                 script {
                     sh '''
                     . venv/bin/activate
-                    robot -d results Assignments_Leander_van_Vliet/UITests/LoginUnitTest/LoginUnitTest.robot
-                    robot -d results Assignments_Leander_van_Vliet/UITests/LogOutUnitTest/LogOutUnitTest.robot
-                    robot -d results Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot
+                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/LoginUnitTest/LoginUnitTest.robot 
+                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/LogOutUnitTest/LogOutUnitTest.robot 
+                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot 
                     '''
                 }
             }
         }
-
         stage('Run API Tests') {
             steps {
                 script {
                     sh '''
                     . venv/bin/activate
-                    python -m unittest discover -s Assignments_Leander_van_Vliet/APITests -p "*.py"
+                    python -m unittest Assignments_Leander_van_Vliet/APITests/CreateUser/CreateUser.py
+                    python -m unittest Assignments_Leander_van_Vliet/APITests/DeleteUser/DeleteUser.py
+                    python -m unittest Assignments_Leander_van_Vliet/APITests/GetDelayedUserList/GetDelayedUserlist.py
+                    python -m unittest Assignments_Leander_van_Vliet/APITests/LoginUser/LoginUser.py
                     '''
                 }
             }
         }
     }
-
     post {
-        failure {
-            mail to: 'jouw-email@example.com',
-                 subject: "Jenkins Build Failed",
-                 body: "Build #${currentBuild.number} failed. Check logs at: ${env.BUILD_URL}"
-        }
+        always {
+            script {
+                failure {
+                        emailext (
+                            to: 'Thisemailisfakebutineedtoputsomething@somethingofcourse.com',
+                            subject: 'One of your jenkins tests failed',
+                            body: """You need to check your pipeline results in Jenkins to see what went wrong. Kind regards, Jenkins robot""",
+                            attachmentsPattern: 'Assignments_Leander_van_Vliet/log.html'
+                        )
+                    echo "Build result = ${currentBuild.result}"
+                   
+                }
+                success {
+                    currentBuild.result = 'SUCCESS'
+                    echo "Build result = ${currentBuild.result}, no email will be send"
+                   
+                }
+            }
+        }   
     }
 }
