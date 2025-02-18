@@ -12,7 +12,6 @@ Checkout repository
     This is the first stage. It will make sure that the repository is cloned to the Jenkins workspace.
     This is needed to make sure that Jenkins can access to files in the repo and exectute the tests!
 
-
 Install Dependencies
 
     This stage will set up an virtual environment with the needed dependencies installed. 
