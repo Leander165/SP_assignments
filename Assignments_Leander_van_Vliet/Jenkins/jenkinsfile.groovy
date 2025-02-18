@@ -1,10 +1,10 @@
 pipeline {
     agent any
 
-    environment {
-        ROBOT_OUTPUT_DIR = 'results'
+    triggers {
+        cron('0 7 * * *')
     }
-
+    
     stages {
         stage('Checkout Repository') {
             steps {
@@ -33,9 +33,9 @@ pipeline {
                 script {
                     sh '''
                     . venv/bin/activate
-                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/LoginUnitTest/LoginUnitTest.robot 
-                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/LogOutUnitTest/LogOutUnitTest.robot 
-                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot 
+                    python -m robot -d  Assignments_Leander_van_Vliet/UITests/LoginUnitTest/LoginUnitTest.robot 
+                    python -m robot -d  Assignments_Leander_van_Vliet/UITests/LogOutUnitTest/LogOutUnitTest.robot 
+                    python -m robot -d  Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot 
                     '''
                 }
             }
@@ -53,5 +53,27 @@ pipeline {
                 }
             }
         }
+    }
+    post {
+        always {
+            script {
+                failure {
+                        emailext (
+                            to: 'Thisemailisfakebutineedtoputsomething@somethingofcourse.com',
+                            subject: 'One of your jenkins tests failed',
+                            body: """You need to check your pipeline results in Jenkins to see what went wrong. Kind regards, Jenkins robot""",
+                            attachmentsPattern: 'Assignments_Leander_van_Vliet/log.html'
+                        )
+                    }
+                    echo "Build result = ${currentBuild.result}"
+                   
+                
+                else {
+                    currentBuild.result = 'SUCCESS'
+                    echo "Build result = ${currentBuild.result}, no email will be send"
+                   
+                }
+            }
+        }   
     }
 }
