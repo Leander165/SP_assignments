@@ -12,6 +12,7 @@ To run this test, you need to make sure that:
 To execute the test you can run robot with : logout_unit_test.robot
 
 Comments:
+The resource path is set to the path that is used by the jenkins pipeline. If you want to run the test locally, use the other resource path that is in the code with a #.
 No code arguments or comments are given in the robot files since this is messing up the execution of the code in jenkins. All of the comments are placed here. 
 This code uses xpaths to determine what button to click or what element to wait on to appear. The xpaths are found with the dev tool in Chrome. 
 This code opens an incognito version of chrome. The reason for this is a pop-up with information about "a not safe password that is used" was blocking the test on normal chrome. 
