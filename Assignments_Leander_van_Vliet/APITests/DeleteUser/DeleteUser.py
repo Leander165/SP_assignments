@@ -1,5 +1,5 @@
 # This request will delete a user called Leander van Vliet in the database. It will return a 204, but the user is still in the database since this is a dummy API
-#Also a unit test is done to verify if the information that is returned is correct.
+#Also a unit test is done to verify if the (not having a body with) information that is returned is correct.
 
 import unittest
 import requests

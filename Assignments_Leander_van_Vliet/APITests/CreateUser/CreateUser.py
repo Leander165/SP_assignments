@@ -1,5 +1,5 @@
 # This request will add a user called Leander van Vliet in the database. Also it will print the response and the status code after execution.
-# A unit test will be executed to make sure the response I correct.
+# A unit test will be executed to make sure the response is correct.
 
 import unittest
 import requests
@@ -7,7 +7,6 @@ import requests
 class TestCreateUser(unittest.TestCase):
 
     def setUp(self):
-        """Setup test variables"""
         self.url = "https://reqres.in/api/users"
         self.data = {
             "name": "Leander van Vliet",
