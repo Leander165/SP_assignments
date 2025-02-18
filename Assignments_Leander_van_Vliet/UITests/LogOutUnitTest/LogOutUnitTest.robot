@@ -2,8 +2,10 @@
 Library    SeleniumLibrary
 Library    DateTime
 Library    OperatingSystem
-Resource   UITests/resources/keywords.robot
-Resource   UITests/resources/variables.robot
+#Resource   UITests/resources/keywords.robot
+#Resource   UITests/resources/variables.robot
+Resource   Assignments_Leander_van_Vliet/UITests/resources/keywords.robot
+Resource   Assignments_Leander_van_Vliet/UITests/resources/variables.robot
 
 *** Test Cases ***
 Logging out from SauceDemo

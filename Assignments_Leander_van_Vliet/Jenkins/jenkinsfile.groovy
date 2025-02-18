@@ -32,7 +32,22 @@ pipeline {
                 script {
                     sh '''
                     . venv/bin/activate
-                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot || echo "⚠️ Robot Framework test failed with exit code $?"
+                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/LoginUnitTest/LoginUnitTest.robot 
+                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/LogOutUnitTest/LogOutUnitTest.robot 
+                    python -m robot -d results Assignments_Leander_van_Vliet/UITests/BuyAShirtEndToEndTest/BuyAShirtEndToEndTest.robot 
+                    '''
+                }
+            }
+        }
+        stage('Run API Tests') {
+            steps {
+                script {
+                    sh '''
+                    . venv/bin/activate
+                    python -m results Assignments_Leander_van_Vliet/APITests/CreateUser/CreateUser.py
+                    python -m results Assignments_Leander_van_Vliet/APITests/DeleteUser/DeleteUser.py 
+                    python -m results Assignments_Leander_van_Vliet/APITests/GetDelayedUserList/GetDelayedUserList.py
+                    python -m results Assignments_Leander_van_Vliet/APITests/LoginUser/LoginUser.py                    
                     '''
                 }
             }
