@@ -64,11 +64,10 @@ pipeline {
                             body: """You need to check your pipeline results in Jenkins to see what went wrong. Kind regards, Jenkins robot""",
                             attachmentsPattern: 'Assignments_Leander_van_Vliet/log.html'
                         )
-                    }
                     echo "Build result = ${currentBuild.result}"
                    
-                
-                else {
+                }
+                success {
                     currentBuild.result = 'SUCCESS'
                     echo "Build result = ${currentBuild.result}, no email will be send"
                    
