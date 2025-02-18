@@ -44,10 +44,10 @@ pipeline {
                 script {
                     sh '''
                     . venv/bin/activate
-                    python -m  Assignments_Leander_van_Vliet/APITests/CreateUser/CreateUser
-                    python -m  Assignments_Leander_van_Vliet/APITests/DeleteUser/DeleteUser
-                    python -m  Assignments_Leander_van_Vliet/APITests/GetDelayedUserList/GetDelayedUserList
-                    python -m  Assignments_Leander_van_Vliet/APITests/LoginUser/LoginUser                 
+                    python Assignments_Leander_van_Vliet/APITests/CreateUser/CreateUser.py
+                    python Assignments_Leander_van_Vliet/APITests/DeleteUser/DeleteUser.py
+                    python Assignments_Leander_van_Vliet/APITests/GetDelayedUserList/GetDelayedUserList.py
+                    python Assignments_Leander_van_Vliet/APITests/LoginUser/LoginUser.py
                     '''
                 }
             }
