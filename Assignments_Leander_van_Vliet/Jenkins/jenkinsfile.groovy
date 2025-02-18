@@ -47,7 +47,7 @@ pipeline {
                     . venv/bin/activate
                     python -m unittest Assignments_Leander_van_Vliet/APITests/CreateUser/CreateUser.py
                     python -m unittest Assignments_Leander_van_Vliet/APITests/DeleteUser/DeleteUser.py
-                    python -m unittest Assignments_Leander_van_Vliet/APITests/GetDelayedUserList/GetDelayedUserList.py
+                    python -m unittest Assignments_Leander_van_Vliet/APITests/GetDelayedUserList/GetDelayedUserlist.py
                     python -m unittest Assignments_Leander_van_Vliet/APITests/LoginUser/LoginUser.py
                     '''
                 }
