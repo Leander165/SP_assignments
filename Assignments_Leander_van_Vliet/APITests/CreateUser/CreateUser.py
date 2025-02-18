@@ -1,3 +1,6 @@
+# This request will add a user called Leander van Vliet in the database. Also it will print the response and the status code after execution.
+# A unit test will be executed to make sure the response I correct.
+
 import unittest
 import requests
 
@@ -25,10 +28,6 @@ class TestCreateUser(unittest.TestCase):
         # Check if an ID and a "createdAt" are in the response
         self.assertIn("id", response_json, "ID is missing in response!")
         self.assertIn("createdAt", response_json, "CreatedAt timestamp is missing!")
-
-    def tearDown(self):
-        """Teardown method (if needed)"""
-        pass
 
 if __name__ == "__main__":
     unittest.main()
